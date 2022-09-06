@@ -1,18 +1,17 @@
-package com.course.microservices.camelmicroservicea.routes.b;
+package com.course.microservices.camelmicroservicea.routes.c;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
 //@Component
-public class MyFirstRouter extends RouteBuilder{
+public class KafkaMqSenderRouter extends RouteBuilder{
 
 	@Override
 	public void configure() throws Exception {
-		from("file:files/input")
+
+		from("file:files/json")
 		.log("${body}")
-		.to("file:files/output");
-		
-		
+		.to("kafka:myKafkaTopic");
 	}
 
 }
